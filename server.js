@@ -4,16 +4,16 @@ const uuid = require('uuid/v1');
 const randomColor = require('randomcolor');
 
 // Set the port to 3001
-// const PORT = 3001;
+const PORT = 3001;
 
 //Set the port to 5000 for Heroku
-const PORT = 5000;
+// const PORT = 5000;
 
 // Create a new express server
 const server = express()
 // Make the express server serve static assets (html, javascript, css) from the /public folder
   .use(express.static('public'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+  .listen(process.env.PORT || 5000, () => console.log(`Listening on ${ PORT }`));
 
 // Create the WebSockets server
 const wss = new SocketServer({
